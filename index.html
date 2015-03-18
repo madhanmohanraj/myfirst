@@ -10,11 +10,12 @@
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
 </head>
 <body>
+
 <div ng-app>
   <h2>Todo</h2>
   <div ng-controller="TodoCtrl">
     <span>{{remaining()}} of {{todos.length}} remaining</span>
-    [ <a href="" ng-click="archive()">Archive</a> ]
+    [ <a href="" ng-click="archive()">archive</a> ]
     <ul class="unstyled">
       <li ng-repeat="todo in todos">
         <input type="checkbox" ng-model="todo.done">
@@ -28,18 +29,19 @@
     </form>
   </div>
 </div>
+
 </div>
 <script>
 function TodoCtrl($scope) {
   $scope.todos = [
-    {text:'Learn angular', done:true},
-    {text:'Build an angular app', done:false}];
+    {text:'learn angular', done:true},
+    {text:'build an angular app', done:false}];
 
   $scope.addTodo = function() {
     $scope.todos.push({text:$scope.todoText, done:false});
     $scope.todoText = '';
   };
-  
+
   $scope.remaining = function() {
     var count = 0;
     angular.forEach($scope.todos, function(todo) {
@@ -47,7 +49,7 @@ function TodoCtrl($scope) {
     });
     return count;
   };
-  
+
   $scope.archive = function() {
     var oldTodos = $scope.todos;
     $scope.todos = [];
